@@ -146,4 +146,32 @@ id.head()
 ```
 sns.boxplot(x='sepal_width',data=id)
 ```
-https://user-images.githubusercontent.com/118343698/264526816-722ac426-969f-4ec4-a6a1-8c8079353268.png
+![dsex2-16](https://github.com/r-sathish-02/ODD2023---Datascience---Ex-02/assets/118787261/7c30d5d0-37e3-412d-8fd8-c3ed14f3f54b)
+
+```
+c1=id.sepal_width.quantile(0.25)
+c3=id.sepal_width.quantile(0.75)
+iq=c3-c1
+print(c3)
+```
+![dsex2-17](https://github.com/r-sathish-02/ODD2023---Datascience---Ex-02/assets/118787261/f529c8dc-35b2-49cb-bb48-0ebbcb8634d3)
+
+```
+rid=id[((id.sepal_width<(c1-1.5*iq))|(id.sepal_width>(c3+1.5*iq)))]
+rid['sepal_width']
+```
+![dsex2-18](https://github.com/r-sathish-02/ODD2023---Datascience---Ex-02/assets/118787261/2ee003cf-6115-4f80-b767-abd60e3dd158)
+
+```
+delid=id[~((id.sepal_width<(c1-1.5*iq))|(id.sepal_width>(c3+1.5*iq)))]
+delid
+```
+![dsex2-19](https://github.com/r-sathish-02/ODD2023---Datascience---Ex-02/assets/118787261/02b14778-330f-4e88-b51c-c798ff113757)
+
+```
+sns.boxplot(x='sepal_width',data=delid)
+```
+![dsex2-20](https://github.com/r-sathish-02/ODD2023---Datascience---Ex-02/assets/118787261/4085fcb6-1839-4532-b680-dee3b3d42769)
+
+# RESULT
+Thus the outliers are detected and removed in the given file and the final data set is saved into the file.
